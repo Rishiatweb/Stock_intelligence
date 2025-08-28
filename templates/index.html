@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Market Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+</head>
+<body>
+    <header><h1>Stock Market Dashboard</h1></header>
+    <main class="dashboard-container">
+        <div class="left-panel">
+            <h2>Companies</h2>
+            <ul id="company-list"></ul>
+            <div class="sentiment-panel">
+                <h2>News Sentiment</h2>
+                <div id="sentiment-summary">
+                    <p>Overall:</p>
+                    <span id="sentiment-overall" class="sentiment-neutral">-</span>
+                </div>
+                <ul id="headlines-list"></ul>
+            </div>
+        </div>
+        <div class="main-panel">
+            <h2 id="chart-title">Stock Chart</h2>
+            <p id="message-area" class="message"></p>
+
+            <!-- NEW KEY STATS PANEL -->
+            <div id="indicators-panel" class="indicators-container">
+                <div class="indicator-box">
+                    <h4>52-Week High</h4>
+                    <p id="high-52-week">-</p>
+                </div>
+                <div class="indicator-box">
+                    <h4>52-Week Low</h4>
+                    <p id="low-52-week">-</p>
+                </div>
+                <div class="indicator-box">
+                    <h4>Average Volume</h4>
+                    <p id="avg-volume">-</p>
+                </div>
+            </div>
+
+            <div id="prediction-panel" class="prediction-container">
+                <button id="predict-button" disabled>Generate Forecast & Backtest</button>
+                <div class="prediction-result">
+                    <h4>7-Day Forecast:</h4>
+                    <table id="forecast-table"></table>
+                </div>
+            </div>
+            <div class="chart-wrapper">
+                <canvas id="stock-chart"></canvas>
+            </div>
+        </div>
+    </main>
+    <script src="{{ url_for('static', path='/js/script.js') }}"></script>
+    <!-- Technical Indicators Panel -->
+    <div id="indicators-tech-panel" class="indicators-container">
+        <div class="indicator-box">
+            <h4>RSI (14)</h4>
+            <p id="rsi-value">-</p>
+        </div>
+        <div class="indicator-box">
+            <h4>MACD</h4>
+            <p id="macd-value">-</p>
+        </div>
+        <div class="indicator-box">
+            <h4>Bollinger Bands</h4>
+            <p id="bb-value">-</p>
+        </div>
+    </div>
+</body>
+</html>
